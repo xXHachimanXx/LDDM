@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ConversorTemperatura</string>
+    <string name="digite_um_texto">Digite um texto...</string>
+    <string name="textview">TextView</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="celsius">Celsius</string>
+    <string name="kelvin">Kelvin</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="digite_um_numero">Digite um numero...</string>
+</resources>
