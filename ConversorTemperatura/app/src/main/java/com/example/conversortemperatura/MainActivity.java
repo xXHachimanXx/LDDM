@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,10 @@ public class MainActivity extends AppCompatActivity
     //Referenciando objetos visuais
     private EditText edtNumero;
     private TextView txtResultado;
+
+    private boolean checkBoxCelsius = false;
+    private boolean checkBoxKelvin = false;
+    private boolean checkBoxFahrenheit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,68 +45,43 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+
     public void onClickButton(View view)
     {
         String numero = edtNumero.getText().toString();
 
         if(validaCampo(numero))
         {
-            txtResultado.setText("Temperatura: " + numero);
+            onClickButton(numero);
         }
         else { print("Obrigatório informar os campos!"); }
     }
 
-    /**
-     * Método para mostrar celsius
-     *
-     * @param view
-     */
-    public void celsiusCheckBox(View view)
+
+    private void onClickButton(String numero)
     {
-        Boolean checked = ((CheckBox) view).isChecked();
-        if (checked)
+        RadioGroup temperaturas = (RadioGroup) findViewById(R.id.idTemperaturas);
+
+        switch (temperaturas.getCheckedRadioButtonId())
         {
-            txtResultado.setText(String.valueOf(edtNumero.getText().toString()));
+            case R.id.idCelsius:
+                txtResultado.setText(String.valueOf(numero));
+                break;
+            case R.id.idKelvin:
+                //pegar string e converter valor para kelvin
+                double temp = Double.parseDouble(numero);
+                temp = (temp + 273.15);
+                txtResultado.setText(String.valueOf(temp) + "K");
+                break;
+            case R.id.idFahrenheit:
+                //pegar string e converter valor para fahrenheit
+                double tmp = Double.parseDouble(numero);
+                tmp = (tmp * 1.8) + 32;
+                txtResultado.setText("°F" + String.valueOf(tmp));
+                break;
+            default:
+                txtResultado.setText("°C: " + numero);
         }
     }
-
-    /**
-     * Método de conversão celsius -> fahrenheit
-     *
-     * @param view
-     */
-    public void fahrenheitCheckBox(View view)
-    {
-        Boolean checked = ((CheckBox) view).isChecked();
-        if (checked)
-        {
-            //pegar string e converter valor para fahrenheit
-            double temp = Double.parseDouble(edtNumero.getText().toString());
-            temp = (temp * 1.8) + 32;
-
-            txtResultado.setText(String.valueOf(temp));
-        }
-
-    }
-
-    /**
-     * Método de conversão celsius -> kelvin
-     *
-     * @param view
-     */
-    public void kelvinCheckBox(View view)
-    {
-        Boolean checked = ((CheckBox) view).isChecked();
-
-        if (checked)
-        {
-            //pegar string e converter valor para fahrenheit
-            double temp = Double.parseDouble(edtNumero.getText().toString());
-            temp = (temp + 273.15);
-
-            txtResultado.setText(String.valueOf(temp));
-            print("" + temp);
-        }
-    }//end kelvinCheckBox()
 
 }

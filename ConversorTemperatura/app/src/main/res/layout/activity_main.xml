@@ -19,11 +19,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <EditText
@@ -57,38 +52,40 @@
             android:padding="5dp"
             android:text="@string/textview" />
 
-        <CheckBox
-            android:id="@+id/fahrenheit"
+        <RadioGroup
+            android:id="@+id/idTemperaturas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="fahrenheitCheckBox"
-            android:padding="5dp"
-            android:text="@string/fahrenheit"
-            tools:text="@string/fahrenheit" />
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/kelvin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:onClick="kelvinCheckBox"
-            android:padding="5dp"
-            android:text="@string/kelvin"
-            tools:text="@string/kelvin" />
+            <RadioButton
+                android:id="@+id/idFahrenheit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/fahrenheit" />
 
-        <CheckBox
-            android:id="@+id/celsius"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:onClick="celsiusCheckBox"
-            android:padding="5dp"
-            android:text="@string/celsius"
-            tools:text="@string/celsius" />
+            <RadioButton
+                android:id="@+id/idKelvin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/kelvin" />
+
+            <RadioButton
+                android:id="@+id/idCelsius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/celsius" />
+        </RadioGroup>
 
     </LinearLayout>
 
