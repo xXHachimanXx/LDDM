@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +31,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
     }
 
-    public boolean validaCampo(String campo)
+    public boolean validaCampo(double number)
     {
-        return (campo == null || campo.equals(""));
+        return (number > 0);
     }
 
     //Procedimento para imprimir mensagem na tela
@@ -48,36 +49,38 @@ public class MainActivity extends AppCompatActivity
         this.edtNumero = findViewById(R.id.edtNumeroid);
         this.txtResultado = findViewById(R.id.txtResultadoid);
 
-        String numero = edtNumero.getText().toString();
+        double numero = Double.valueOf(edtNumero.getText().toString());
 
         if(validaCampo(numero))
         {
-            onClickButton(numero);
+            onClickButton(numero, view);
         }
         else { print("Obrigatório informar os campos!"); }
     }
 
 
-    private void onClickButton(String numero)
+    private void onClickButton(double numero, View view)
     {
         RadioGroup temperaturas = (RadioGroup) findViewById(R.id.idTemperaturas);
+        boolean checked = ((RadioButton) view).isChecked();
 
         switch (temperaturas.getCheckedRadioButtonId())
         {
             case R.id.idCelsius:
-                txtResultado.setText(String.valueOf(numero));
+                if(checked)
+                    txtResultado.setText("" + numero);
                 break;
             case R.id.idKelvin:
                 //pegar string e converter valor para kelvin
-                double temp = Double.parseDouble(numero);
+                double temp = numero;
                 temp = (temp + 273.15);
-                txtResultado.setText(String.valueOf(temp) + "K");
+                txtResultado.setText(temp + "K");
                 break;
             case R.id.idFahrenheit:
                 //pegar string e converter valor para fahrenheit
-                double tmp = Double.parseDouble(numero);
+                double tmp = numero;
                 tmp = (tmp * 1.8) + 32;
-                txtResultado.setText("°F" + String.valueOf(tmp));
+                txtResultado.setText("°F" + tmp);
                 break;
             default:
                 txtResultado.setText("°C: " + numero);
