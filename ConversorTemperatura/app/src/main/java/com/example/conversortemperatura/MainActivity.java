@@ -22,12 +22,10 @@ public class MainActivity extends AppCompatActivity
     private boolean checkBoxKelvin = false;
     private boolean checkBoxFahrenheit = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        //Realizando referências aos obj visuais
-        edtNumero = findViewById(R.id.edtNumeroid);
-        txtResultado = findViewById(R.id.txtResultadoid);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -45,9 +43,12 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     public void onClickButton(View view)
     {
+        //Realizando referências aos obj visuais
+        this.edtNumero = findViewById(R.id.edtNumeroid);
+        this.txtResultado = findViewById(R.id.txtResultadoid);
+
         String numero = edtNumero.getText().toString();
 
         if(validaCampo(numero))
