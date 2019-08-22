@@ -60,6 +60,15 @@
             android:orientation="vertical">
 
             <RadioButton
+                android:id="@+id/idReau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/r_aumur" />
+
+            <RadioButton
                 android:id="@+id/idFahrenheit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

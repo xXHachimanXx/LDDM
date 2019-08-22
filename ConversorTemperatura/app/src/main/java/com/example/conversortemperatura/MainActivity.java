@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
         {
             case R.id.idCelsius:
                 if(checked)
-                    txtResultado.setText("" + numero);
+                    txtResultado.setText(numero + "°C");
                 break;
             case R.id.idKelvin:
                 //pegar string e converter valor para kelvin
@@ -80,10 +80,16 @@ public class MainActivity extends AppCompatActivity
                 //pegar string e converter valor para fahrenheit
                 double tmp = numero;
                 tmp = (tmp * 1.8) + 32;
-                txtResultado.setText("°F" + tmp);
+                txtResultado.setText(tmp + "°F");
+                break;
+            case R.id.idReau:
+                //pegar string e converter valor para fahrenheit
+                double tmp2 = numero;
+                tmp2 = (tmp2 * 4)/2;
+                txtResultado.setText(tmp2 + "°Ré");
                 break;
             default:
-                txtResultado.setText("°C: " + numero);
+                txtResultado.setText(numero + "°C");
                 break;
         }
     }
