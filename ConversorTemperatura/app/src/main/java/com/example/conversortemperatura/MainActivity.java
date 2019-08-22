@@ -32,10 +32,7 @@ public class MainActivity extends AppCompatActivity
 
     public boolean validaCampo(String campo)
     {
-        if(campo == null || campo.equals(""))
-            return false;
-        else
-            return true;
+        return campo == null || campo.equals("");
     }
 
     //Procedimento para imprimir mensagem na tela
@@ -55,17 +52,6 @@ public class MainActivity extends AppCompatActivity
             txtResultado.setText("Texto: " + texto + " Número: " + numero);
         }
         else { print("Obrigatório informar os campos!"); }
-    }
-
-
-    public void onClickCheckBox(View view)
-    {
-        Boolean checked = ((CheckBox)view).isChecked();
-
-        if(checked)
-            print("CheckBox ON");
-        else
-            print("CheckBox OFF");
     }
 
     /**
@@ -95,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         if (checked)
         {
             //pegar string e converter valor para fahrenheit
-            double temp = double.parseFloat(edtTexto.getText().toString());
+            double temp = Double.parseDouble(edtTexto.getText().toString());
             temp = (temp * 1.8) + 32;
 
             edtTexto.setText(String.valueOf(temp));
