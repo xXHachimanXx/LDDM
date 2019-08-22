@@ -18,15 +18,14 @@ public class MainActivity extends AppCompatActivity
     private EditText edtNumero;
     private TextView txtResultado;
 
-    private boolean checkBoxCelsius = false;
-    private boolean checkBoxKelvin = false;
-    private boolean checkBoxFahrenheit = false;
+    private boolean checkBoxCelsius;
+    private boolean checkBoxKelvin;
+    private boolean checkBoxFahrenheit;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             default:
                 txtResultado.setText("°C: " + numero);
+                break;
         }
     }
 
