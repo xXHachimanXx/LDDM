@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         String numero = edtNumero.getText().toString();
 
         if(validaCampo(texto) && validaCampo(numero))
-        {
+        {            
             txtResultado.setText("Texto: " + texto + " Número: " + numero);
         }
         else { print("Obrigatório informar os campos!"); }
@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity
         Boolean checked = ((CheckBox) view).isChecked();
         if (checked)
         {
-            print("" + edtTexto.getText().toString());
+            edtTexto.setText(String.valueOf(edtNumero.getText().toString()));
+            print("" + edtTexto.getText().toString());            
         }
 
     }
@@ -94,9 +95,10 @@ public class MainActivity extends AppCompatActivity
         if (checked)
         {
             //pegar string e converter valor para fahrenheit
-            float temp = Float.parseFloat(edtTexto.getText().toString());
-            temp = (float) (temp * 1.8) + 32;
+            double temp = double.parseFloat(edtTexto.getText().toString());
+            temp = (temp * 1.8) + 32;
 
+            edtTexto.setText(String.valueOf(temp));
             print("" + temp);
         }
 
@@ -114,9 +116,10 @@ public class MainActivity extends AppCompatActivity
         if (checked)
         {
             //pegar string e converter valor para fahrenheit
-            float temp = Float.parseFloat(edtTexto.getText().toString());
-            temp = (float)(temp + 273.15);
+            double temp = Double.parseDouble(edtTexto.getText().toString());
+            temp = (temp + 273.15);
 
+            edtTexto.setText(String.valueOf(temp));
             print("" + temp);
         }
     }//end kelvinCheckBox()
