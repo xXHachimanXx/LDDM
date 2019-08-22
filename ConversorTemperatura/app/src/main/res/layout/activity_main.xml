@@ -19,16 +19,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtTextoId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="@string/digite_um_texto"
-                android:padding="5dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_weight="1"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

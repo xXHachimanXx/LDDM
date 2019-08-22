@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends AppCompatActivity
 {
     //Referenciando objetos visuais
-    private TextInputEditText edtTexto;
     private EditText edtNumero;
     private TextView txtResultado;
 
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         //Realizando referências aos obj visuais
-        edtTexto = findViewById(R.id.edtTextoId);
         edtNumero = findViewById(R.id.edtNumeroid);
         txtResultado = findViewById(R.id.txtResultadoid);
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity
 
     public boolean validaCampo(String campo)
     {
-        return campo == null || campo.equals("");
+        return (campo == null || campo.equals(""));
     }
 
     //Procedimento para imprimir mensagem na tela
@@ -44,12 +42,11 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickButton(View view)
     {
-        String texto = edtTexto.getText().toString();
         String numero = edtNumero.getText().toString();
 
-        if(validaCampo(texto) && validaCampo(numero))
-        {            
-            txtResultado.setText("Texto: " + texto + " Número: " + numero);
+        if(validaCampo(numero))
+        {
+            txtResultado.setText("Temperatura: " + numero);
         }
         else { print("Obrigatório informar os campos!"); }
     }
@@ -64,10 +61,8 @@ public class MainActivity extends AppCompatActivity
         Boolean checked = ((CheckBox) view).isChecked();
         if (checked)
         {
-            edtTexto.setText(String.valueOf(edtNumero.getText().toString()));
-            print("" + edtTexto.getText().toString());            
+            txtResultado.setText(String.valueOf(edtNumero.getText().toString()));
         }
-
     }
 
     /**
@@ -81,11 +76,10 @@ public class MainActivity extends AppCompatActivity
         if (checked)
         {
             //pegar string e converter valor para fahrenheit
-            double temp = Double.parseDouble(edtTexto.getText().toString());
+            double temp = Double.parseDouble(edtNumero.getText().toString());
             temp = (temp * 1.8) + 32;
 
-            edtTexto.setText(String.valueOf(temp));
-            print("" + temp);
+            txtResultado.setText(String.valueOf(temp));
         }
 
     }
@@ -102,10 +96,10 @@ public class MainActivity extends AppCompatActivity
         if (checked)
         {
             //pegar string e converter valor para fahrenheit
-            double temp = Double.parseDouble(edtTexto.getText().toString());
+            double temp = Double.parseDouble(edtNumero.getText().toString());
             temp = (temp + 273.15);
 
-            edtTexto.setText(String.valueOf(temp));
+            txtResultado.setText(String.valueOf(temp));
             print("" + temp);
         }
     }//end kelvinCheckBox()
