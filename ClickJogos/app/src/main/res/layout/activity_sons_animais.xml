@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tela2">
+    tools:context=".SonsAnimaisActivity">
 
     <TableRow
         android:layout_width="match_parent"
@@ -14,8 +14,7 @@
             android:id="@+id/ape"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ape"
-            android:contentDescription="TODO" />
+            app:srcCompat="@drawable/ape" />
 
         <ImageView
             android:id="@+id/cow"
@@ -29,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/cat"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/todo" />
     </TableRow>
 
     <TableRow

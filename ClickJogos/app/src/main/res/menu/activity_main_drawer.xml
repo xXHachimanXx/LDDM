@@ -1,38 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/icone_som_id"
-            android:icon="@drawable/ic_sons_animais_black_24dp"
-            android:title="@string/nome_animais" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_adivinha_black_24dp"
-            android:title="@string/adivinha" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/AnimaisId"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/sons_dos_animais" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/AdivinhaId"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/jogo_de_advinha" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
-
 </menu>

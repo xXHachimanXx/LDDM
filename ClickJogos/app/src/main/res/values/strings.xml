@@ -15,5 +15,7 @@
     <string name="menu_send">Send</string>
     <string name="nome_animais" />
     <string name="adivinha">adivinha</string>
-    <string name="todo">TODO</string>
+    <string name="sons_dos_animais">Sons dos Animais</string>
+    <string name="jogo_de_advinha">Jogo de Advinha</string>
+    <string name="button">Button</string>
 </resources>

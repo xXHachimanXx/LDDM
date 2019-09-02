@@ -1,37 +1,83 @@
 package com.example.clickjogos;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.drawerlayout.widget.DrawerLayout;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+{
+    private Button botaoTocar;
+    private MediaPlayer mp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sons_animais);
 
-import android.view.Menu;
-import android.widget.ImageView;
-import android.widget.Toast;
+        botaoTocar = (Button) findViewById(R.id.tocar_id);
+        mp = MediaPlayer.create(MainActivity.this, R.raw.ape);
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        botaoTocar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mp.isPlaying())
+                    pauseMusic();
+                else
+                    playMusic();
+            }
+        });
 
+    }
+
+    private void playMusic() {
+        if (mp != null) {
+            mp.start();
+            botaoTocar.setText("Pause");
+        }
+
+    }
+
+    private void pauseMusic()
+    {
+        if (mp != null) {
+            mp.pause();
+            botaoTocar.setText("Tocar");
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+    {
+        // Handle navigation view item clicks here.
+        int id = menuItem.getItemId();
+        if (id == R.id.AnimaisId) {
+            startActivity(new Intent(MainActivity.this, SonsAnimaisActivity.class));
+            return true;
+        } else if (id == R.id.AdivinhaId) {
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+    /*
     private ImageView imagemSom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -46,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         imagemSom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Tela2.class));
+                startActivity(new Intent(MainActivity.this, SonsAnimaisActivity.class));
             }
         });
     }
@@ -90,9 +136,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.icone_som_id) {
-            startActivity(new Intent(MainActivity.this, Tela2.class));
+            startActivity(new Intent(MainActivity.this, SonsAnimaisActivity.class));
             // Handle the camera action
-        } else if (id == R.id.cabessId) {
+        } else if (id == R.id.animaisId) {
             Toast.makeText(MainActivity.this, "Ce vai senta na CABESSSSS", Toast.LENGTH_LONG);
         }
 
@@ -100,4 +146,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    */
 }
