@@ -33,17 +33,21 @@ public class SonsAnimaisActivity extends AppCompatActivity implements View.OnCli
     }
 
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sons_animais);
 
+        /*
         for(int i=0; i<animais.length;i++)
         {
             btnAnimais[i] = (Button) findViewById(getIdByName(animais[i] + "Id","id"));
             btnAnimais[i].setOnClickListener((View.OnClickListener) this);
             mapButtonId.put(getIdByName(animais[i] + "Id","id"), animais[i] );
         }
+        */
+
     }    
 
 }
