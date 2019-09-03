@@ -18,19 +18,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <ImageView
             android:id="@+id/jogoAdivinhaID"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            tools:srcCompat="@drawable/jogo_adivinha" />
+            app:srcCompat="@drawable/jogo_adivinha" />
 
         <ImageView
-            android:layout_gravity="center"
             android:id="@+id/animaisId"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/som_animais" />
 
 
