@@ -22,10 +22,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ImageView animais = findViewById(R.id.animaisId);
 
+        ImageView adivinha = findViewById(R.id.jogoAdivinhaID);
+
         animais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SonsAnimaisActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        adivinha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, JogoAdvinha.class);
                 startActivity(intent);
             }
         });
