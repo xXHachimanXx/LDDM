@@ -23,11 +23,12 @@ public class SonsAnimaisActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v)
     {
         Toast.makeText(getApplicationContext(), mapButtonId.get(v.getId()), Toast.LENGTH_LONG).show();
-        MediaPlayer mp = MediaPlayer.create(SonsAnimaisActivity.this,
-                                            getIdByName(mapButtonId.get(v.getId()), "raw"));
-        if(mp !=null) mp.start();
+        MediaPlayer mp = MediaPlayer.create(SonsAnimaisActivity.this, getIdByName(mapButtonId.get(v.getId()), "raw"));
+        if(mp !=null) { mp.start(); }
     }
-    public int getIdByName(String name, String recource) {
+
+    public int getIdByName(String name, String recource) 
+    {
         return getResources().getIdentifier(name, recource, getPackageName());
     }
 
@@ -36,12 +37,13 @@ public class SonsAnimaisActivity extends AppCompatActivity implements View.OnCli
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sons_animais);
-        for(int i=0; i<animais.length;i++){
+
+        for(int i=0; i<animais.length;i++)
+        {
             btnAnimais[i] = (Button) findViewById(getIdByName(animais[i] + "Id","id"));
             btnAnimais[i].setOnClickListener((View.OnClickListener) this);
             mapButtonId.put(getIdByName(animais[i] + "Id","id"), animais[i] );
         }
-    }
-
+    }    
 
 }
