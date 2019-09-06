@@ -1,0 +1,15 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/AnimaisId"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/sons_dos_animais" />
+        <item
+            android:id="@+id/AdivinhaId"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/jogo_de_advinha" />
+    </group>
+</menu>
