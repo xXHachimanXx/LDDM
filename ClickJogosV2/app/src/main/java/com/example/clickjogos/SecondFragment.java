@@ -38,8 +38,8 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-        Button btnChutar = findViewById(R.id.btn_chutar);
-        final EditText input = findViewById(R.id.et_numero);
+        Button btnChutar = view.findViewById(R.id.btn_chutar);
+        final EditText input = view.findViewById(R.id.et_numero);
 
         btnChutar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,18 +51,18 @@ public class SecondFragment extends Fragment {
                     int numero = random.nextInt(100);
 
                     if (Integer.parseInt(chute) == numero)
-                        Toast.makeText(getApplicationContext(), "Você acertou mizeravi", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Você acertou mizeravi", Toast.LENGTH_LONG).show();
                     else
-                        Toast.makeText(getApplicationContext(), "Você errou :( \n Era " + numero, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Você errou :( \n Era " + numero, Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
 
         return view;
     }
 
 
+    /*
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.home) {
@@ -71,6 +71,6 @@ public class SecondFragment extends Fragment {
 
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }
