@@ -23,7 +23,7 @@
         app:menu="@menu/activity_main_drawer" />
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragmento1_id"
         android:name="com.example.clickjogos.FirstFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
