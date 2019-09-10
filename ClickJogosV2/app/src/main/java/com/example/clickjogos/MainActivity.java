@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             getSupportFragmentManager().beginTransaction().add
                     (R.id.fragmento1_id, new FirstFragment()).commit();
+
+            getSupportFragmentManager().beginTransaction().add
+                    (R.id.fragmento2_id, new FirstFragment()).commit();
         }
 
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().
-                        add(R.id.fragmento_id, new FirstFragment()).commit();
+                        add(R.id.fragmento1_id, new FirstFragment()).commit();
             }
         });
 
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().
-                        add(R.id.fragmento_id, new SecondFragment()).commit();
+                        add(R.id.fragmento2_id, new SecondFragment()).commit();
             }
         });
     }

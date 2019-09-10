@@ -38,7 +38,6 @@ public class SonsAnimaisActivity extends AppCompatActivity implements View.OnCli
         }
         final MediaPlayer mp = MediaPlayer.create(SonsAnimaisActivity.this, getIdByName("cow", "raw"));
 
-
     }
 
     @Override
@@ -52,7 +51,6 @@ public class SonsAnimaisActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void onClick(View v) {
-        //Toast.makeText(getApplicationContext(), mapButtonId.get(v.getId()), Toast.LENGTH_LONG).show();
         MediaPlayer mp = MediaPlayer.create(SonsAnimaisActivity.this,
                 getIdByName(animaisMap.get(v.getId()),
                         "raw"));
