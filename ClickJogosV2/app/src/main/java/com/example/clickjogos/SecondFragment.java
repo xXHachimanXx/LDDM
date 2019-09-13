@@ -61,16 +61,4 @@ public class SecondFragment extends Fragment {
         return view;
     }
 
-
-    /*
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            NavUtils.navigateUpTo(this, intent);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
-
 }

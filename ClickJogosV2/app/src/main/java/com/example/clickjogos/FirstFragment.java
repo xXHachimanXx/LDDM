@@ -42,33 +42,22 @@ public class FirstFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         animaisMap = new HashMap<>();
-        for (int y = 0; y < animals.length; y++) {
-            animalsImages[y] = findViewById(getIdByName(animals[y],"id"));
+        for (int y = 0; y < animals.length; y++)
+        {
+            animalsImages[y] = view.findViewById(getIdByName(animals[y],"id"));
             animalsImages[y].setOnClickListener((View.OnClickListener) this);
             animaisMap.put(getIdByName(
                     animals[y], "id"), animals[y]);
         }
-        final MediaPlayer mp = (MediaPlayer) MediaPlayer.create(FirstFragment.this, getIdByName("cow", "raw"));
+        final MediaPlayer mp = (MediaPlayer) MediaPlayer.create(view.getContext(), getIdByName("cow", "raw"));
 
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return view;
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            NavUtils.navigateUpTo(this, intent);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void onClick(View v) {
+    public void onClick(View view)
+    {
         //Toast.makeText(getApplicationContext(), mapButtonId.get(v.getId()), Toast.LENGTH_LONG).show();
-        MediaPlayer mp = MediaPlayer.create(FirstFragment.this,
-                getIdByName(animaisMap.get(v.getId()),
-                        "raw"));
+        MediaPlayer mp = MediaPlayer.create(view.getContext(), getIdByName(animaisMap.get(view.getId()), "raw"));
         if (mp != null) {
             mp.start();
         }
@@ -76,6 +65,7 @@ public class FirstFragment extends Fragment
 
 
     public int getIdByName(String name, String resource) {
-        return getResources().getIdentifier(name, resource, getPackageName());
+
+        return getResources().getIdentifier(name, resource, getContext().getPackageName());
     }
 }

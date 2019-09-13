@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().add
                     (R.id.fragmento1_id, new FirstFragment()).commit();
 
-            getSupportFragmentManager().beginTransaction().add
-                    (R.id.fragmento2_id, new FirstFragment()).commit();
         }
 
 
@@ -54,21 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        adivinha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().
-                        add(R.id.fragmento2_id, new SecondFragment()).commit();
-            }
-        });
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+    {
         // Handle navigation view item clicks here.
         int id = menuItem.getItemId();
         if (id == R.id.AnimaisId) {
-            Log.d("Navigation", "onNavigationItemSelected: deu certo");
             startActivity(new Intent(MainActivity.this, SonsAnimaisActivity.class));
             return true;
         } else if (id == R.id.AdivinhaId) {
