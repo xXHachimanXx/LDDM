@@ -9,7 +9,6 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity
 {
-    //XXXXXOOOOOOOORRRREEEIIII
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
