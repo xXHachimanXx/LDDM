@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.agenda.R;
+import com.example.agenda.Tab1Cadastrar;
+import com.example.agenda.Tab2Listar;
+import com.example.agenda.Tab3Atualizar;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -17,7 +20,8 @@ import com.example.agenda.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -26,10 +30,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+    public Fragment getItem(int position)
+    {
+        switch (position)
+        {
+            case 0:
+                Tab1Cadastrar tab1Cadastrar = new Tab1Cadastrar();
+                return tab1Cadastrar;
+            case 1:
+                Tab2Listar tab2Listar = new Tab2Listar();
+                return tab2Listar;
+            case 2:
+                Tab3Atualizar tab3Atualizar = new Tab3Atualizar();
+                return tab3Atualizar;
+            default:
+                return null;
+        }
     }
 
     @Nullable
@@ -40,7 +56,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        // Show 3 total pages.
+        return 3;
     }
 }
