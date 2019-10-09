@@ -54,11 +54,11 @@ public class Tab1Cadastrar extends Fragment
         View rootView = inflater.inflate(R.layout.tab1_cadastrar, container, false);
 
         buttonSalvar = (Button)rootView.findViewById(R.id.button_salvar_id);
-        editTextNome = (EditText)rootView.findViewById(R.id.editText_nome_id);
+        editTextNome = (EditText)rootView.findViewById(R.id.editText_email_id);
         editTextEmail = (EditText)rootView.findViewById(R.id.editText_email_id);
         buttonAtualizar = (Button)rootView.findViewById(R.id.button_atualizar_id);
         buttonDeletar = (Button)rootView.findViewById((R.id.button_delete_id));
-        editTextUserId = (EditText)rootView.findViewById(R.id.editText_iduser_id);
+        editTextUserId = (EditText)rootView.findViewById(R.id.editText_email_id);
 
         return rootView;
     }

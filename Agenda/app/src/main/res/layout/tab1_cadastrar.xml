@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.190">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_nome_id"
+            android:id="@+id/editText_email_id"
             android:layout_width="247dp"
             android:layout_height="29dp"
             android:hint="Digite o nome..." />
