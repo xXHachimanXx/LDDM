@@ -35,8 +35,10 @@ public class PlaceholderFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
+
         int index = 1;
-        if (getArguments() != null) {
+        if (getArguments() != null)
+        {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
@@ -45,9 +47,10 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+            Bundle savedInstanceState)
+    {
         View root = inflater.inflate(R.layout.tab1_cadastrar, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
+        final TextView textView = root.findViewById(R.id.tabs);
         pageViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
