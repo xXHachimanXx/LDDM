@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
     public class SectionsPagerAdapter extends FragmentPagerAdapter
     {
 
-        public SectionsPagerAdapter(FragmentManager fm)
+        public SectionsPagerAdapter(MainActivity mainActivity, FragmentManager fm)
         {
             super(fm);
         }
@@ -100,4 +100,5 @@ public class MainActivity extends AppCompatActivity
             return null;
         }
     }
+    */
 }//class MainActivity

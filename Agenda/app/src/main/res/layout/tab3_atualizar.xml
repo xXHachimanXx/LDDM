@@ -110,7 +110,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_buscar_id "
+        android:id="@+id/button_buscar_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -145,7 +145,7 @@
         app:layout_constraintVertical_bias="0.228" />
 
     <Button
-        android:id="@+id/button_atualizar_id1"
+        android:id="@+id/button_atualizar_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
