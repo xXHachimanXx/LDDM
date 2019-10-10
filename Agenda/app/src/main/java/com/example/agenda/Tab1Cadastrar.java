@@ -18,8 +18,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class Tab1Cadastrar extends Fragment
 {
     private Button buttonSalvar;
-    private TextInputEditText editTextNome;
-    private TextInputEditText editTextEmail;
+    private EditText editTextNome;
+    private EditText editTextEmail;
     private Button buttonAtualizar;
 
     @Override

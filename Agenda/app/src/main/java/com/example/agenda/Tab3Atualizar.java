@@ -65,9 +65,9 @@ public class Tab3Atualizar extends Fragment
                 String nome = editTextNome.getText().toString();
                 String email = editTextEmail.getText().toString();
                 if(!nome.equals("") && !email.equals("")){
-                    //int id = Integer.parseInt(editTextUserId.getText().toString());
+                    int id = Integer.parseInt(editTextUserId.getText().toString());
                     Contato contato = new Contato(nome, email);
-                    //contato.setId(id);
+                    contato.setId(id);
                     atualizaUsuarios (contato);
                     Toast.makeText(getContext().getApplicationContext(), "Atualizado com sucesso", Toast.LENGTH_SHORT).show();
                     editTextNome.setText("");

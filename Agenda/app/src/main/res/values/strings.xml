@@ -4,7 +4,7 @@
     <string name="tab_text_2">Listar</string>
     <string name="tab_text_3">Atualizar</string>
     <string name="salvar">SALVAR</string>
-    <string name="email">email</string>
+    <string name="email">E-mail</string>
     <string name="digite_o_email">Digite o email...</string>
     <string name="nome">Nome</string>
     <string name="button">Button</string>
@@ -16,4 +16,5 @@
     <string name="hint">hint</string>
     <string name="digite_aqui">Digite aqui...</string>
     <string name="identificador">Identificador</string>
+    <string name="cadastro_text">Cadastro de contatos</string>
 </resources>
