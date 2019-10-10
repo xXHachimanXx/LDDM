@@ -61,6 +61,7 @@
         app:layout_constraintVertical_bias="0.169">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id_text_input_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_aqui" />
@@ -84,6 +85,7 @@
         app:layout_constraintVertical_bias="0.37">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_text_input_edit_text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_aqui" />
@@ -104,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_email_id ">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nome_text_input_edit_text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_aqui" />

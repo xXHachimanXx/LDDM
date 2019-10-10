@@ -12,27 +12,29 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class Tab3Atualizar extends Fragment
 {
     private Button buttonBuscar;
-    private EditText editTextNome;
-    private EditText editTextEmail;
+    private TextInputEditText editTextNome;
+    private TextInputEditText editTextEmail;
     private Button buttonAtualizar;
     private Button buttonDeletar;
-    private EditText editTextUserId;
+    private TextInputEditText editTextUserId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.tab3_atualizar, container, false);
-        buttonBuscar = (Button) rootView.findViewById(R.id.button_buscar_id);
-        editTextNome = (EditText) rootView.findViewById(R.id.editText_email_id);
-        editTextEmail = (EditText) rootView.findViewById(R.id.editText_email_id);
-        buttonAtualizar = (Button) rootView.findViewById(R.id.button_atualizar_id);
-        buttonDeletar = (Button) rootView.findViewById((R.id.button_delete_id));
-        editTextUserId = (EditText) rootView.findViewById(R.id.editText_email_id);
+        buttonBuscar = rootView.findViewById(R.id.button_buscar_id);
+        editTextNome = rootView.findViewById(R.id.nome_text_input_edit_text3);
+        editTextEmail = rootView.findViewById(R.id.email_text_input_edit_text2);
+        buttonAtualizar = rootView.findViewById(R.id.button_atualizar_id);
+        buttonDeletar = rootView.findViewById((R.id.button_delete_id));
+        editTextUserId = rootView.findViewById(R.id.id_text_input_edit_text);
 
         buttonBuscar.setOnClickListener(new View.OnClickListener()
         {

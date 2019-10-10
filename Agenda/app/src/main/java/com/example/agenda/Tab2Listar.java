@@ -28,9 +28,9 @@ public class Tab2Listar extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.tab2_listar, container, false);
-        listView = (ListView) rootView.findViewById(R.id.listView_id);
+        listView = rootView.findViewById(R.id.listView_id);
 
-        botaoAtualizar = (Button) rootView.findViewById(R.id.button_atualizar_id);
+        botaoAtualizar = rootView.findViewById(R.id.button_atualizar_id);
         contatos = recuperarUsuarios ();
         adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
 
