@@ -14,7 +14,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="324dp"
-        android:text="@string/textview"
+        android:text="@string/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/email" />
@@ -26,7 +26,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="116dp"
-        android:text="@string/textview"
+        android:text="@string/identificador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Identidicador" />
@@ -38,7 +38,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="68dp"
-        android:text="@string/textview"
+        android:text="@string/nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:text="@string/nome" />
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.228" />
 
     <Button
-        android:id="@+id/button_atualizar_id"
+        android:id="@+id/button_atualizar3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

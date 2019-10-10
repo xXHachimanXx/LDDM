@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -32,7 +31,7 @@ public class Tab3Atualizar extends Fragment
         buttonBuscar = rootView.findViewById(R.id.button_buscar_id);
         editTextNome = rootView.findViewById(R.id.nome_text_input_edit_text3);
         editTextEmail = rootView.findViewById(R.id.email_text_input_edit_text2);
-        buttonAtualizar = rootView.findViewById(R.id.button_atualizar_id);
+        buttonAtualizar = rootView.findViewById(R.id.button_atualizar3);
         buttonDeletar = rootView.findViewById((R.id.button_delete_id));
         editTextUserId = rootView.findViewById(R.id.id_text_input_edit_text);
 

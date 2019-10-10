@@ -11,16 +11,16 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class Tab1Cadastrar extends Fragment
 {
     private Button buttonSalvar;
-    private EditText editTextNome;
-    private EditText editTextEmail;
+    private TextInputEditText editTextNome;
+    private TextInputEditText editTextEmail;
     private Button buttonAtualizar;
-    private Button buttonDeletar;
-    private EditText editTextUserId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -53,12 +53,10 @@ public class Tab1Cadastrar extends Fragment
     {
         View rootView = inflater.inflate(R.layout.tab1_cadastrar, container, false);
 
-        buttonSalvar = (Button)rootView.findViewById(R.id.button_salvar_id);
-        editTextNome = (EditText)rootView.findViewById(R.id.editText_email_id);
-        editTextEmail = (EditText)rootView.findViewById(R.id.editText_email_id);
-        buttonAtualizar = (Button)rootView.findViewById(R.id.button_atualizar_id);
-        buttonDeletar = (Button)rootView.findViewById((R.id.button_delete_id));
-        editTextUserId = (EditText)rootView.findViewById(R.id.editText_email_id);
+        buttonSalvar = rootView.findViewById(R.id.button_salvar_id);
+        editTextNome = rootView.findViewById(R.id.nome_edit_text1);
+        editTextEmail = rootView.findViewById(R.id.email_edit_text1);
+        buttonAtualizar = rootView.findViewById(R.id.button_atualizar3);
 
         return rootView;
     }
