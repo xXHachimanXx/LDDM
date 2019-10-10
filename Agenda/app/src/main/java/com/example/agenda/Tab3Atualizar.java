@@ -40,16 +40,20 @@ public class Tab3Atualizar extends Fragment
             @Override
             public void onClick(View v)
             {
-                int id = Integer.parseInt(editTextUserId.getText().toString());
-                Contato contato = recuperarUsuarios (id);
+                if(!editTextUserId.getText().toString().equals("")){
+                    int id = Integer.parseInt(editTextUserId.getText().toString());
+                    Contato contato = recuperarUsuarios (id);
 
-                if (contato != null)
-                {
-                    editTextNome.setText(contato.getNome());
-                    editTextEmail.setText(contato.getEmail());
+                    if (contato != null)
+                    {
+                        editTextNome.setText(contato.getNome());
+                        editTextEmail.setText(contato.getEmail());
+                    }
+                    else
+                        Toast.makeText(getContext().getApplicationContext(), "Usuário não encontrado.", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(getContext().getApplicationContext(), "Usuário não encontrado.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Favor digitar um id.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -60,13 +64,17 @@ public class Tab3Atualizar extends Fragment
             {
                 String nome = editTextNome.getText().toString();
                 String email = editTextEmail.getText().toString();
-                int id = Integer.parseInt(editTextUserId.getText().toString());
-                Contato contato = new Contato(nome, email);
-                contato.setId(id);
-                atualizaUsuarios (contato);
-                Toast.makeText(getContext().getApplicationContext(), "Atualizado com sucesso", Toast.LENGTH_SHORT).show();
-                editTextNome.setText("");
-                editTextEmail.setText("");
+                if(!nome.equals("") && !email.equals("")){
+                    //int id = Integer.parseInt(editTextUserId.getText().toString());
+                    Contato contato = new Contato(nome, email);
+                    //contato.setId(id);
+                    atualizaUsuarios (contato);
+                    Toast.makeText(getContext().getApplicationContext(), "Atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                    editTextNome.setText("");
+                    editTextEmail.setText("");
+                }
+                else
+                    Toast.makeText(getContext().getApplicationContext(), "Favor preencher os campos", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -75,11 +83,16 @@ public class Tab3Atualizar extends Fragment
             @Override
             public void onClick(View v)
             {
-                int id = Integer.parseInt(editTextUserId.getText().toString());
-                deleteUsuarios (id);
-                Toast.makeText(getContext().getApplicationContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
-                editTextNome.setText("");
-                editTextEmail.setText("");
+                if(!editTextUserId.getText().toString().equals("")){
+                    int id = Integer.parseInt(editTextUserId.getText().toString());
+                    deleteUsuarios (id);
+                    Toast.makeText(getContext().getApplicationContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
+                    editTextNome.setText("");
+                    editTextEmail.setText("");
+                }
+                else
+                    Toast.makeText(getContext().getApplicationContext(), "Digite o id", Toast.LENGTH_SHORT).show();
+
             }
         });
 

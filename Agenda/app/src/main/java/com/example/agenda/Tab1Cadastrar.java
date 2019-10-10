@@ -34,12 +34,14 @@ public class Tab1Cadastrar extends Fragment
             {
                 String nome = editTextNome.getText().toString();
                 String email = editTextEmail.getText().toString();
-                if ((nome != "") && (email != ""))
+                if ((!nome.equals("")) && (!email.equals("")))
                 {
                     Contato pessoa = new Contato(nome, email);
                     cadastrarUsuarios(pessoa);
                     Toast.makeText(getContext().getApplicationContext(), "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                 }
+                else
+                    Toast.makeText(getContext().getApplicationContext(), "Campos vazios", Toast.LENGTH_SHORT).show();
 
                 editTextNome.setText("");
                 editTextEmail.setText("");
