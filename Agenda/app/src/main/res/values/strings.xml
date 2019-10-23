@@ -17,4 +17,7 @@
     <string name="digite_aqui">Digite aqui...</string>
     <string name="identificador">Identificador</string>
     <string name="cadastro_text">Cadastro de contatos</string>
+    <string name="cep">CEP</string>
+    <string name="cep">CEP</string>
+    <string name="endere_o">Endereço</string>
 </resources>
