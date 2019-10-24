@@ -10,7 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +30,8 @@ public class Tab2Listar extends Fragment
     private Button botaoAtualizar;
     private ArrayAdapter<Contato> adapter;
     private List<Contato> contatos;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference contatoDatabaseReference = databaseReference.child("Contatos");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -42,9 +51,38 @@ public class Tab2Listar extends Fragment
             @Override
             public void onClick(View v)
             {
-                contatos = recuperarUsuarios();
-                adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
-                listView.setAdapter(adapter);
+                listView.setAdapter(null);
+
+                contatoDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener()
+                {
+                   @Override
+                   public void onDataChange(DataSnapshot dataSnapshot)
+                   {
+                       List<Contato> contatos = new ArrayList<Contato>();
+                       int num = 0;
+                       for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                       {
+                           Contato contato = new Contato();
+
+                           contato.setNome(postSnapshot.child("nome").getValue().toString());
+
+                           contato.setEmail(postSnapshot.child("email").getValue().toString());
+
+                           contato.setCep(postSnapshot.child("cep").getValue().toString());
+
+                           contato.setEndereco(postSnapshot.child("endereco").getValue().toString());
+                           contatos.add(contato);
+                           contato = null;
+                       }//end for
+
+                       adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
+                       listView.setAdapter(adapter);
+                   }
+
+                   @Override
+                   public void onCancelled(DatabaseError databaseError) {
+                   }
+               });
             }
         });
 
@@ -85,5 +123,6 @@ public class Tab2Listar extends Fragment
         return contatos;
 
     }//end recuperarUsuarios()
+
 
 }//end class Tab2Listar

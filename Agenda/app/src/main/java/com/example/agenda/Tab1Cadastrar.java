@@ -2,6 +2,7 @@ package com.example.agenda;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -21,6 +27,8 @@ public class Tab1Cadastrar extends Fragment
     private EditText editTextNome;
     private EditText editTextEmail;
     private Button buttonAtualizar;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference contatoDatabaseReference = databaseReference.child("Contatos");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -63,10 +71,12 @@ public class Tab1Cadastrar extends Fragment
         return rootView;
     }
 
+/*
     private void cadastrarUsuarios (Contato pessoa)
     {
         try
         {
+
             //Apaga o banco de dadados
             //getContext().getApplicationContext().deleteDatabase("bancoContatos");
             //definimos o nome e o modo do banco de dados.
@@ -82,4 +92,29 @@ public class Tab1Cadastrar extends Fragment
             e.printStackTrace();
         }
     }
+    */
+
+    private void cadastrarUsuarios (final Contato pessoa)
+    {
+        contatoDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               String idContato = Base64.encodeToString( pessoa.getEmail().getBytes(), Base64.DEFAULT).replaceAll("(\\n|\\r)", "");
+               pessoa.setId(Integer.parseInt(idContato));
+
+               boolean contatoJaCadastrado = dataSnapshot.hasChild(idContato);
+
+               if (contatoJaCadastrado)
+                   Toast.makeText(getContext().getApplicationContext(), "Contato já cadastrado anteriormente.", Toast.LENGTH_SHORT).show();
+               else {
+                   contatoDatabaseReference.child(idContato).setValue(pessoa);
+               }
+           }
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+           }
+       });
+    }
+
 }
