@@ -3,7 +3,9 @@ package com.example.webservices;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,12 +25,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
 {
-    private EditText edtCep;
-    private EditText edtLogradouro;
-    private EditText edtComplemento;
-    private EditText edtBairro;
-    private EditText edtCidade;
-    private EditText edtUF;
+    private TextView edtCep;
+    private TextView edtLogradouro;
+    private TextView edtComplemento;
+    private TextView edtBairro;
+    private TextView edtCidade;
+    private TextView edtUF;
+    private Button botaoPesquisar;
 
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference contatoDatabaseReference = databaseReference.child("Contatos");
@@ -38,12 +41,22 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edtCep = (EditText) findViewById(R.id.edtCepId);
-        edtLogradouro = (EditText) findViewById(R.id.edtLogradouroId);
-        edtComplemento = (EditText) findViewById(R.id.edtComplementoId);
-        edtBairro = (EditText) findViewById(R.id.edtBairroId);
-        edtCidade = (EditText) findViewById(R.id.edtCidadeId);
-        edtUF = (EditText) findViewById(R.id.edtUFId);
+        edtCep = findViewById(R.id.edtCepId);
+        edtLogradouro =  findViewById(R.id.edtLogradouroId);
+        edtComplemento =  findViewById(R.id.edtComplementoId);
+        edtBairro = findViewById(R.id.edtBairroId);
+        edtCidade = findViewById(R.id.edtCidadeId);
+        edtUF = findViewById(R.id.edtUFId);
+        botaoPesquisar = findViewById(R.id.idBotaoPesquisar);
+
+        botaoPesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                onClickPesquisar();
+            }
+        });
+
     }
 
     //Método para exibir mensagem Toast
@@ -53,7 +66,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     // PROCEDIMENTO PARA EXECUTAR O ONCLICK DO BOTÃO
-    public void onClickPesquisar(View view)
+    public void onClickPesquisar()
     {
         String cep = edtCep.getText().toString();
         if(cep == null || cep.equals(""))
@@ -120,6 +133,7 @@ public class MainActivity extends AppCompatActivity
                     edtBairro.setText(json.getString("bairro"));
                     edtCidade.setText(json.getString("localidade"));
                     edtUF.setText(json.getString("uf"));
+                    salvarEndereco();
                     print("Endereço recuperado com sucesso!");
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -147,20 +161,15 @@ public class MainActivity extends AppCompatActivity
                 endereco.setUF(uf);
                 endereco.setCep(cep);
 
-                salcerEnderecos(endereco);
+                salvarEndereco(endereco);
                 Toast.makeText(getApplicationContext(), "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
             }
             else
-                Toast.makeText(getApplicationContext(), "Campos vazios", Toast.LENGTH_SHORT).show();
-
-            edtLogradouro.setText("");
-            edtComplemento.setText("");
-            edtBairro.setText("");
-            edtCidade.setText("");
-            edtUF.setText("");
-            edtCep.setText("");
+                {
+                    Toast.makeText(getApplicationContext(), "Campos vazios", Toast.LENGTH_SHORT).show();
+                }
         }
-        private void salcerEnderecos (Endereco endereco)
+        private void salvarEndereco (Endereco endereco)
         {
             databaseReference.child("endereços").push().setValue(endereco);
         }

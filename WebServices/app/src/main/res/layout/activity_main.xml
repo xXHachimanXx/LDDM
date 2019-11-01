@@ -16,19 +16,20 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:autoText="true"
         android:ems="10"
+        android:hint="@string/digite_o_cep_apenas_n_meros"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="Digite o CEP (apenas números)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.004" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/idBotaoPesquisar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -45,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtCepId"
         app:layout_constraintVertical_bias="0.021" />
 
-    <EditText
+    <TextView
         android:id="@+id/edtLogradouroId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,15 +58,15 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Logradouro"
+        android:text="@string/logradouro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/idBotaoPesquisar"
         app:layout_constraintVertical_bias="0.06" />
 
-    <EditText
+    <TextView
         android:id="@+id/edtComplementoId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -77,14 +78,14 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Complemento"
+        android:text="@string/complemento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtLogradouroId"
         app:layout_constraintVertical_bias="0.052" />
 
-    <EditText
+    <TextView
         android:id="@+id/edtBairroId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -96,7 +97,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Bairro"
+        android:text="@string/bairro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -104,7 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtComplementoId"
         app:layout_constraintVertical_bias="0.064" />
 
-    <EditText
+    <TextView
         android:id="@+id/edtCidadeId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -116,14 +117,14 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Localidade"
+        android:text="@string/localidade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtBairroId"
         app:layout_constraintVertical_bias="0.083" />
 
-    <EditText
+    <TextView
         android:id="@+id/edtUFId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -135,7 +136,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="UF"
+        android:text="@string/uf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
