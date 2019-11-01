@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WebServices</string>
+    <string name="digite_o_cpf_apenas_n_meros">Digite o CPF (Apenas números)</string>
+    <string name="pesquisa_endere_o">PESQUISA ENDEREÇO</string>
+</resources>
