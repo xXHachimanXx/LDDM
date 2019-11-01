@@ -4,24 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 public class MainActivity extends AppCompatActivity
 {
     //Referenciando objetos visuais
     private EditText edtNumero;
     private TextView txtResultado;
-
-    private boolean checkBoxCelsius;
-    private boolean checkBoxKelvin;
-    private boolean checkBoxFahrenheit;
 
 
     @Override
@@ -62,13 +55,13 @@ public class MainActivity extends AppCompatActivity
     private void onClickButton(double numero, View view)
     {
         RadioGroup temperaturas = (RadioGroup) findViewById(R.id.idTemperaturas);
-        boolean checked = ((RadioButton) view).isChecked();
+        //boolean checked = ((RadioButton) view).isChecked();
 
         switch (temperaturas.getCheckedRadioButtonId())
         {
             case R.id.idCelsius:
-                if(checked)
-                    txtResultado.setText(numero + "°C");
+                //if(checked)
+                txtResultado.setText(numero + "°C");
                 break;
             case R.id.idKelvin:
                 //pegar string e converter valor para kelvin
