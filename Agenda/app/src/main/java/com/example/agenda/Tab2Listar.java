@@ -1,7 +1,5 @@
 package com.example.agenda;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,16 +21,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
 
 public class Tab2Listar extends Fragment
 {
     private ListView listView;
     private Button botaoAtualizar;
     private ArrayAdapter<Contato> adapter;
+
+    private DatabaseReference contatoDatabaseReference = FirebaseDatabase.getInstance().getReference().child("contatos");
+
     private List<Contato> contatos;
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference contatoDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Contatos");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -42,10 +41,12 @@ public class Tab2Listar extends Fragment
         listView = rootView.findViewById(R.id.listView_id);
         contatos = new ArrayList<>();
         botaoAtualizar = rootView.findViewById(R.id.button_atualizar2);
-        contatos = recuperarUsuarios ();
+
+        recuperarUsuarios();
+
         adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
 
-        //O listView não pode adicnar um tipo List, mas podemos adicionar um tipo adapter (que contem nossa lista de contatos)
+        //O listView não pode adicionar um tipo List, mas podemos adicionar um tipo adapter (que contem nossa lista de contatos)
         listView.setAdapter(adapter);
 
         botaoAtualizar.setOnClickListener(new View.OnClickListener()
@@ -53,78 +54,40 @@ public class Tab2Listar extends Fragment
             @Override
             public void onClick(View v)
             {
-                listView.setAdapter(null);
-
-                contatoDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener()
-                {
-                   @Override
-                   public void onDataChange(DataSnapshot dataSnapshot)
-                   {
-                       List<Contato> contatos = new ArrayList<Contato>();
-                       int num = 0;
-                       for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                       {
-                           Contato contato = new Contato();
-
-                           contato.setNome(postSnapshot.child("nome").getValue().toString());
-
-                           contato.setEmail(postSnapshot.child("email").getValue().toString());
-
-                           contato.setCep(postSnapshot.child("cep").getValue().toString());
-
-                           contato.setEndereco(postSnapshot.child("endereco").getValue().toString());
-                           contatos.add(contato);
-                           contato = null;
-                       }//end for
-
-                       adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
-                       listView.setAdapter(adapter);
-                   }
-
-                   @Override
-                   public void onCancelled(DatabaseError databaseError) {
-                   }
-               });
+                recuperarUsuarios();
             }
         });
 
         return rootView;
     }
 
-
-    private List<Contato> recuperarUsuarios ()
-    {
-        Contato contato;
-        List<Contato> contatos = new ArrayList<Contato>();
-        try
+    private void recuperarUsuarios(){
+        contatoDatabaseReference.addValueEventListener(new ValueEventListener()
         {
-            SQLiteDatabase bancoDeDados = getContext().getApplicationContext().openOrCreateDatabase("bancoContatos" , MODE_PRIVATE, null);
-            //recuperar dados da tabela
-            Cursor cursor = bancoDeDados.rawQuery("SELECT id, nome, email FROM Contato", null);
-
-            //recuperando o índice das colunas (o primeiro campo é 0, o segundo é 1)
-            int indiceId = cursor.getColumnIndex("id");
-            int indiceNome = cursor.getColumnIndex("nome");
-            int indiceEmail = cursor.getColumnIndex("email");
-
-            //o cursos se move do primeiro item ao último a medida em que a leitura ocorre
-            cursor.moveToFirst();
-            while (cursor != null)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                contato = new Contato (cursor.getString(indiceNome), cursor.getString(indiceEmail));
-                contato.setId(Integer.parseInt(cursor.getString(indiceId)));
-                contatos.add(contato);
-                contato = null;
-                cursor.moveToNext(); //move para o próximo registro
+                contatos = new ArrayList<>();
+                adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                {
+                    Contato contato = postSnapshot.getValue(Contato.class);
+                    contatos.add(contato);
+
+                    adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);
+                    listView.setAdapter(adapter);
+                }//end for
+
             }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return contatos;
 
-    }//end recuperarUsuarios()
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                Toast.makeText(getContext().getApplicationContext(), "Erro: falha na busca", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
 
 }//end class Tab2Listar
