@@ -31,14 +31,16 @@ public class Tab2Listar extends Fragment
     private ArrayAdapter<Contato> adapter;
     private List<Contato> contatos;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference contatoDatabaseReference = databaseReference.child("Contatos");
+    private DatabaseReference contatoDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Contatos");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.tab2_listar, container, false);
-        listView = rootView.findViewById(R.id.listView_id);
 
+        //INICIALIZAR COMPONENTES
+        listView = rootView.findViewById(R.id.listView_id);
+        contatos = new ArrayList<>();
         botaoAtualizar = rootView.findViewById(R.id.button_atualizar2);
         contatos = recuperarUsuarios ();
         adapter = new ArrayAdapter<Contato>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, contatos);

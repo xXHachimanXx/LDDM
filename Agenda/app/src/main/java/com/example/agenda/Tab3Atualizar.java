@@ -177,30 +177,6 @@ public class Tab3Atualizar extends Fragment {
     }
 
 
-    /*
-    private Contato recuperarUsuarios(int id) {
-        Contato contato = null;
-        try {
-            SQLiteDatabase bancoDeDados = getContext().getApplicationContext().openOrCreateDatabase("bancoContatos", MODE_PRIVATE, null);
-
-            Cursor cursor = bancoDeDados.rawQuery("SELECT id, nome, email FROM Contato WHERE id = " + String.valueOf(id), null);
-            int indiceId = cursor.getColumnIndex("id");
-            int indiceNome = cursor.getColumnIndex("nome");
-            int indiceEmail = cursor.getColumnIndex("email");
-
-            cursor.moveToFirst();
-            while (cursor != null) {
-                contato = new Contato(cursor.getString(indiceNome), cursor.getString(indiceEmail));
-                contato.setId(Integer.parseInt(cursor.getString(indiceId)));
-                cursor.moveToNext(); //move para o próximo registro
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return contato;
-    }
-*/
-
     private void deleteUsuarios(final String email)
     {
         contatoDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener()
